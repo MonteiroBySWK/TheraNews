@@ -1,5 +1,5 @@
 import FormField from "@/components/forms/FormField";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -11,9 +11,12 @@ export default function SingInScreen() {
   })
 
   function handleForm(formEmail: string, formPassword: string) {
-    setForm({ ...form, email: formEmail, password: formPassword })
   }
 
+  function submit() {
+    console.log("Enviando informação")
+    handleForm(form.email, form.password)
+  }
   return (
     <SafeAreaView>
       <ScrollView>
@@ -35,6 +38,7 @@ export default function SingInScreen() {
           <TouchableOpacity
             className="rounded-xl justify-center items-center bg-teal-400 py-3 mt-4"
             activeOpacity={0.8}
+            onPress={submit}
           >
             <Text className="font-medium text-lg">Entrar</Text>
           </TouchableOpacity>

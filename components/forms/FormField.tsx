@@ -14,7 +14,7 @@ export default function FormField({ label, value, onChangeText, keyboardType }: 
           keyboardType={keyboardType}
           value={value}
           onChangeText={onChangeText}
-          secureTextEntry={label === "Password" && !showPassword}
+          secureTextEntry={(label === "Password" || label === "Confirm Password") && !showPassword}
         />
 
         {(label === "Password" || label === "Confirm Password") && (

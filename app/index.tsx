@@ -10,7 +10,7 @@ export default function Index() {
         <View className="justify-center items-center h-full gap-y-4">
           <Text className="font-bold text-3xl">Bem-Vindo!</Text>
           <TouchableOpacity activeOpacity={0.8}>
-            <Link href="/sing-in" className="px-4 py-2 bg-transparent border border-gray-400 rounded-md" >Entrar</Link>
+            <Link href="/sing-in" className="px-4 py-3 bg-transparent border border-gray-400 rounded-md" >Entrar</Link>
           </TouchableOpacity>
           <Link href="/home" className="text-xs font-light text-blue-400 underline">Offline</Link>
         </View>

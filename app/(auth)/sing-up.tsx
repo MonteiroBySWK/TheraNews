@@ -12,6 +12,19 @@ export default function SingUpScreen() {
     password2: '',
   })
 
+  function handleForm(usernameForm: string, emailForm: string, passwordForm: string, confirmPassword: string) {
+    if (passwordForm === confirmPassword) {
+      console.log("Senhas iguais, OK!")
+      console.log("Enviando dados")
+    } else {
+      console.log("Senhas diff")
+    }
+  }
+
+  function submit() {
+    console.log("Enviando informação")
+    handleForm(form.username, form.email, form.password, form.password2)
+  }
 
   return (
     <SafeAreaView>
@@ -37,7 +50,7 @@ export default function SingUpScreen() {
             />
             <FormField
               label="Confirm Password"
-              value={form.password}
+              value={form.password2}
               onChangeText={(e: any) => setForm({ ...form, password2: e })}
             />
 
@@ -45,8 +58,9 @@ export default function SingUpScreen() {
           <TouchableOpacity
             className="rounded-xl justify-center items-center bg-teal-400 py-3 mt-4"
             activeOpacity={0.8}
+            onPress={submit}
           >
-            <Text className="font-medium text-lg">Entrar</Text>
+            <Text className="font-medium text-lg">Criar Conta</Text>
           </TouchableOpacity>
 
           <View className="justify-center items-center pt-4 flex-row gap-2">
