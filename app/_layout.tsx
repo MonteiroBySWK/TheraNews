@@ -24,6 +24,13 @@ export default function RootLayout() {
         }}
       />
 
+      <Stack.Screen
+        name="search/[query]"
+        options={{
+          headerShown: false,
+        }}
+      />
+
     </Stack>
   );
 }
