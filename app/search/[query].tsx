@@ -20,20 +20,21 @@ export default function SearchScreen() {
       })
   }, [])
 
-
   return (
     <SafeAreaView>
-      {results !== null ?
-        < FlatList
-          data={results}
-          keyExtractor={(item) => item['id']
-          }
-          renderItem={({ item }) => (
-            <View style={{ marginBottom: 10 }}>
-              <Text>{item['headline']['main']}</Text>
-              <Text>{item['snippet']}</Text>
-            </View>)}
-        /> : <View className=" h-full items-center justify-center"><ActivityIndicator size="large" color="#0000ff" /></View >
+      {results.length !== 0 ?
+        <View className="p-4">
+          <Text className="text-2xl font-bold">Results for <Text className="text-green-500">"{query}"</Text></Text>
+          < FlatList
+            data={results}
+            keyExtractor={(item) => item['_id']}
+            renderItem={({ item }) => (
+              <View className="border-b-black border-b pb-4">
+                <Text className="font-semibold text-lg">{item['headline']['main']}</Text>
+                <Text>{item['snippet']}</Text>
+              </View>)}
+          />
+        </View> : <View className=" h-full items-center justify-center"><ActivityIndicator size="large" color="#0000ff" /></View >
       }
     </SafeAreaView>
   )

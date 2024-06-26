@@ -32,6 +32,14 @@ export default function TabLayout() {
           headerShown: false,
           tabBarIcon: ({ }) => <Ionicons name="list-outline" size={28} />
         }} />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Perfil",
+          headerShown: false,
+          tabBarIcon: ({ }) => <Ionicons name="person-outline" size={28} />
+        }} />
+
     </Tabs>
   )
 }

@@ -7,10 +7,9 @@ export default function SearchInput() {
 
   const [query, setQuery] = useState("")
 
-
   function sendQuery() {
     if (!query) {
-      return Alert.alert("Blank")
+      return Alert.alert("blank")
     }
 
     if (pathname.startsWith("/search")) {
@@ -20,7 +19,6 @@ export default function SearchInput() {
     }
 
   }
-
 
   const pathname = usePathname()
 

@@ -7,11 +7,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function HomeScreen() {
   const [data, setData] = useState(null);
 
+  const url = 'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aey75HrhjZfTGzNNu3FQ2ywSaeIWTR0K'
+
   useEffect(() => {
-    fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aey75HrhjZfTGzNNu3FQ2ywSaeIWTR0K')
+    fetch(url)
       .then(response => response.json())
       .then(json => {
-        setData(json)
+        setData(json.results)
       })
       .catch(error => {
         console.error(error)
@@ -27,18 +29,15 @@ export default function HomeScreen() {
         <Text className="py-8 text-3xl font-extrabold">Top Stories Today</Text>
         {data !== null ?
           <FlatList
-            data={data["results"]}
+            data={data}
             renderItem={
-              ({ item }) => <PostHome
-                title={item.title}
-                date={item.published_date}
-                keywords={item.abstract}
-              />
+              ({ item }) =>
+                <PostHome item={item} />
             }
-            keyExtractor={item => item.asset_id}
+            keyExtractor={item => item.url}
           /> : <View className=" h-full items-center justify-center"><ActivityIndicator size="large" color="#0000ff" /></View>
         }
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
   )
 }
