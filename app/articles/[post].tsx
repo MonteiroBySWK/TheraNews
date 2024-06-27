@@ -45,7 +45,8 @@ export default function ArticleDetailScreen() {
    * "created_date": "2024-06-24T12:02:53-04:00", 
    * "des_facet": ["Dancing", "Woolf Works (Ballet)"], 
    * "geo_facet": [], 
-   * "item_type": "Article", "kicker": "", 
+   * "item_type": "Article", 
+   * "kicker": "", 
    * "material_type_facet": "", 
    * "multimedia": [
    *         {"caption": "American Ballet Theater performing Wayne McGregor’s ”Woolf Works” in California in spring.", 
@@ -87,25 +88,33 @@ export default function ArticleDetailScreen() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View className="h-full items-center">
+        <View className="h-full">
           <Image
             source={{ uri: item["multimedia"][1]["url"] }}
-            height={item["multimedia"][1]["height"]}
-            width={item["multimedia"][1]["width"]}
-            resizeMethod="resize"
-            resizeMode="contain"
+            style={{
+              width: "100%",
+              height: 250,
+              resizeMode: "cover"
+            }}
           />
 
-          <Text className="text-black text-xl"> {item["title"]} </Text>
-          <Text className="text-black text-md"> {item["byline"]} </Text>
-          <Text className="text-black text-md"> Data de Criação: {formatDate(item["created_date"], 'dd/MM/yyyy - HH:mm')} </Text>
-          <Text className="text-black text-md"> {item["section"]} </Text>
-          <Text className="text-black text-md"> Data de Publicação: {formatDate(item["published_date"], 'dd/MM/yyyy - HH:mm')} </Text>
-          <Text className="text-black text-md"> {item["abstract"]} </Text>
+          <View className="flex-1 w-full px-4 mt-4 space-y-2">
+            <View className="flex-row gap-x-2">
+              {item["item_type"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["item_type"]} </Text>}
+              {item["org_facet"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["org_facet"][0]} </Text>}
+              {item["section"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["section"]} </Text>}
+              {item["subsection"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["subsection"]} </Text>}
+            </View>
+            <Text className="text-black text-2xl font-extrabold">{item["title"]}</Text>
+            <Text className="text-black text-md font-thin">{item["byline"]},
+              <Text> {formatDate(item["created_date"], 'dd/MM/yyyy - HH:mm')} </Text>
+            </Text>
 
+            <Text className="text-black text-lg">{item["abstract"]} </Text>
+          </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </SafeAreaView >
 
   )
 }

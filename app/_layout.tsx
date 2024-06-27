@@ -33,7 +33,8 @@ export default function RootLayout() {
       <Stack.Screen
         name="articles/[post]"
         options={{
-          headerShown: false,
+          title: "",
+          headerTransparent: true,
         }}
       />
 

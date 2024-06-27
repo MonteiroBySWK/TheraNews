@@ -26,16 +26,18 @@ export default function HomeScreen() {
         <View className="flex-row items-center p-4">
           <SearchInput />
         </View>
-        <Text className="py-8 text-3xl font-extrabold">Top Stories Today</Text>
         {data !== null ?
-          <FlatList
-            data={data}
-            renderItem={
-              ({ item }) =>
-                <PostHome item={item} />
-            }
-            keyExtractor={item => item.url}
-          /> : <View className=" h-full items-center justify-center"><ActivityIndicator size="large" color="#0000ff" /></View>
+          <>
+            <Text className="py-8 text-3xl font-extrabold">Top Stories Today</Text>
+            <FlatList
+              className="mb-4"
+              data={data}
+              renderItem={
+                ({ item }) =>
+                  <PostHome item={item} />
+              }
+              keyExtractor={item => item.url}
+            /></> : <View className=" h-full items-center justify-center"><ActivityIndicator size="large" color="#0000ff" /></View>
         }
       </View>
     </SafeAreaView >
