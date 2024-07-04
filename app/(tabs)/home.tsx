@@ -23,7 +23,8 @@ export default function HomeScreen() {
   return (
     <SafeAreaView>
       <View className="items-center justify-center">
-        <View className="flex-row items-center p-4">
+        <View className="items-center p-4">
+          <Text className="text-xl text-black font-bold">Thera News</Text>
           <SearchInput />
         </View>
         {data !== null ?

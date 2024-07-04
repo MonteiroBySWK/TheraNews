@@ -1,3 +1,4 @@
+import FlagPost from "@/components/forms/FlagPost";
 import { formatDate } from "date-fns";
 import { useLocalSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
@@ -99,11 +100,11 @@ export default function ArticleDetailScreen() {
           />
 
           <View className="flex-1 w-full px-4 mt-4 space-y-2">
-            <View className="flex-row gap-x-2">
-              {item["item_type"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["item_type"]} </Text>}
-              {item["org_facet"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["org_facet"][0]} </Text>}
-              {item["section"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["section"]} </Text>}
-              {item["subsection"] != "" && <Text className="text-black text-md bg-gray-300 rounded-xl px-2 py-1">{item["subsection"]} </Text>}
+            <View className="flex-row ml-[-1]">
+              {item["item_type"] != "" && <FlagPost text={item["item_type"]} />}
+              {item["org_facet"] != "" && <FlagPost text={item["org_facet"]} />}
+              {item["section"] != "" && <FlagPost text={item["section"]} />}
+              {item["subsection"] != "" && <FlagPost text={item["subsection"]} />}
             </View>
             <Text className="text-black text-2xl font-extrabold">{item["title"]}</Text>
             <Text className="text-black text-md font-thin">{item["byline"]},
