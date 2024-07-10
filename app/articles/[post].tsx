@@ -1,8 +1,10 @@
 import FlagPost from "@/components/forms/FlagPost";
+import InteractionButtons from "@/components/posts/InteractionButtons";
+import { FontAwesome } from "@expo/vector-icons";
 import { formatDate } from "date-fns";
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
-import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ArticleDetailScreen() {
@@ -99,21 +101,31 @@ export default function ArticleDetailScreen() {
             }}
           />
 
-          <View className="flex-1 w-full px-4 mt-4 space-y-2">
+          <View className="w-full mt-4 px-4 space-y-2">
             <View className="flex-row ml-[-1]">
               {item["item_type"] != "" && <FlagPost text={item["item_type"]} />}
-              {item["org_facet"] != "" && <FlagPost text={item["org_facet"]} />}
               {item["section"] != "" && <FlagPost text={item["section"]} />}
               {item["subsection"] != "" && <FlagPost text={item["subsection"]} />}
             </View>
             <Text className="text-black text-2xl font-extrabold">{item["title"]}</Text>
+
             <Text className="text-black text-md font-thin">{item["byline"]},
               <Text> {formatDate(item["created_date"], 'dd/MM/yyyy - HH:mm')} </Text>
             </Text>
-
             <Text className="text-black text-lg">{item["abstract"]} </Text>
+
+            <InteractionButtons />
           </View>
+          <Link replace href={item["url"]} asChild>
+            <TouchableOpacity
+              className="rounded-xl flex-shrink justify-center items-center bg-teal-400 py-3 mx-4"
+              activeOpacity={0.8}
+            >
+              <Text className="font-medium text-lg">Acessar Noticia</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
+
       </ScrollView>
     </SafeAreaView >
 

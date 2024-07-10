@@ -23,7 +23,7 @@ export default function SearchInput() {
   const pathname = usePathname()
 
   return (
-    <View className="flex-row items-center pl-4 pr-1 py-2 bg-gray-200 rounded-md">
+    <View className="flex-row  pl-4 pr-1 py-2 bg-gray-200 rounded-md">
       <TextInput
         onChangeText={(text) => { setQuery(text) }}
         onSubmitEditing={sendQuery}
