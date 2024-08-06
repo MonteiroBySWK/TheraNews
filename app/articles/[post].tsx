@@ -1,13 +1,17 @@
 import FlagPost from "@/components/forms/FlagPost";
 import InteractionButtons from "@/components/posts/InteractionButtons";
-import { FontAwesome } from "@expo/vector-icons";
 import { formatDate } from "date-fns";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
-import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+
 export default function ArticleDetailScreen() {
+  const [modalVisible, setModalVisible] = useState(false)
+
+
+
   // Parametros
   const { post } = useLocalSearchParams();
 
@@ -125,6 +129,7 @@ export default function ArticleDetailScreen() {
             </TouchableOpacity>
           </Link>
         </View>
+
 
       </ScrollView>
     </SafeAreaView >

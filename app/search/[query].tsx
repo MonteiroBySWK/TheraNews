@@ -22,8 +22,6 @@ export default function SearchScreen() {
       })
   }, [])
 
-  console.log(results)
-
   return (
     <SafeAreaView>
       {results.length !== 0 ?
